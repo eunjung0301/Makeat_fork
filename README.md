@@ -11,7 +11,7 @@
 | 하성민      |Team Leader |https://github.com/xman227 |
 | 강윤경      |Front-end| |
 | 이은정      |Front-end|https://github.com/eunjung0301 |
-| 이승현      |Back-end|  |
+| 이승현      |Back-end|https://github.com/cookie0010  |
 | 한재경      |Back-end|https://github.com/hanjaegyeong|
 | 박재형      |Back-end|  |
 | 김지헌      |AI |  |
