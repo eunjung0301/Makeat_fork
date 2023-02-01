@@ -1,3 +1,0 @@
-[23.02.01] android studio_이은정
-노션에 학습내용 정리
-https://gifted-antler-fe6.notion.site/Android-Studio-Kotlin-78bbd9c4e2bc4d77b7aab96dd317d486
