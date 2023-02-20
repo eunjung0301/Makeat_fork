@@ -1,8 +1,12 @@
+//import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 //import 'package:toonflix/services/api_service.dart';
-import 'package:toonflix/screens/home_screen.dart';
+import 'package:toonflix/screens/start_screen.dart';
 
-void main() {
+void main() async {
+  //final cameras = await availableCameras();
+  //final firstCamera = cameras.first;
+
   runApp(const App());
 }
 
@@ -11,8 +15,8 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: HomeScreen(),
+    return MaterialApp(
+      home: StartScreen(),
     );
   }
 }

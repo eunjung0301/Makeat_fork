@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:toonflix/models/webtoon_model.dart';
+import 'package:toonflix/models/kakao_model.dart';
+import 'package:toonflix/screens/home_page.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -14,6 +15,9 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
+/// Global variables
+/// * [GlobalKey<NavigatorState>]
+
 class MyStatefulWidget extends StatefulWidget {
   const MyStatefulWidget({super.key});
 
@@ -23,19 +27,21 @@ class MyStatefulWidget extends StatefulWidget {
 
 class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   int _selectedIndex = 0;
+
+  /// Global variables
+  /// * [GlobalKey<NavigatorState>]
+
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-  static const List<Widget> _widgetOptions = <Widget>[
-    Text(
-      'Index 0: Home',
+
+  static final List<Widget> _widgetOptions = <Widget>[
+    const HomePage(),
+    const Text(
+      'Index 1: 윤경님파트',
       style: optionStyle,
     ),
-    Text(
-      'Index 1: Business',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 2: School',
+    const Text(
+      'Index 2: 은정님파트',
       style: optionStyle,
     ),
   ];
@@ -114,7 +120,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
 // ),
 // );
 
-ListView makeList(AsyncSnapshot<List<WebtoonModel>> snapshot) {
+ListView makeList(AsyncSnapshot<List<KakaoModel>> snapshot) {
   return ListView.separated(
     padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
     scrollDirection: Axis.horizontal,

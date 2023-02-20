@@ -33,10 +33,15 @@ dependencies:
     sdk: flutter
   http: ^0.13.5
   flutter_native_splash: ^2.2.17
+  #camera: ^0.10.3
+  path_provider: ^2.0.12
+  path: ^1.8.2
   #kakao_flutter_sdk: ^1.3.1 # 전체 추가
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
+  image_picker: ^0.8.1
+  table_calendar: ^3.0.9
 
 dev_dependencies:
   flutter_test:
@@ -67,6 +72,8 @@ flutter:
   assets:
     - images/logo.png
     - images/logo_title.png
+    - images/test_food.jpg
+    - images/kakao_login_medium_wide.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 
