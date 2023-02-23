@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:toonflix/screens/analysis_page.dart';
 import 'package:toonflix/screens/calender_screen.dart';
+import 'package:toonflix/screens/camera_screen.dart';
 import 'package:toonflix/screens/profile_screen.dart';
 
 void getImage({required ImageSource source}) async {
@@ -102,7 +104,12 @@ class HomePage extends StatelessWidget {
                 offset: const Offset(60, -20),
                 child: IconButton(
                   onPressed: () {
-                    getImage(source: ImageSource.camera);
+                    //getImage(source: ImageSource.camera);
+
+                    showDialog(
+                        context: context,
+                        builder: (context) => const CameraScreen());
+
                     // Navigator.push(
                     //     context,
                     //     MaterialPageRoute(

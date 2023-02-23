@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:toonflix/screens/home_screen.dart';
+import 'package:http/http.dart' as http;
 
 class GetInfoScreen extends StatefulWidget {
-  const GetInfoScreen({super.key});
+  final int userId;
+
+  const GetInfoScreen({super.key, required this.userId});
 
   @override
   State<GetInfoScreen> createState() => _GetInfoScreenState();
@@ -12,9 +14,25 @@ class GetInfoScreen extends StatefulWidget {
 class _GetInfoScreenState extends State<GetInfoScreen> {
   final _formKey = GlobalKey<FormState>();
 
+  _postRequest() async {
+    Uri url = Uri.parse('http://192.168.45.46:8080/users/info/$widget.userId');
+
+    http.Response response = await http.post(
+      url,
+      headers: <String, String>{
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: <String, String>{
+        'user_id': 'user_id_value',
+        'user_pwd': 'user_pwd_value'
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         //title: const Text('Makeat'),
         centerTitle: true,
@@ -55,10 +73,12 @@ class _GetInfoScreenState extends State<GetInfoScreen> {
                   onPressed: () {
                     // Validate returns true if the form is valid, or false otherwise.
                     if (_formKey.currentState!.validate()) {
+                      Navigator.pop(context);
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const HomeScreen()));
+                              builder: (context) =>
+                                  HomeScreen(userId: widget.userId)));
                       // If the form is valid, display a snackbar. In the real world,
                       // you'd often call a server or save the information in a database.
                       // ScaffoldMessenger.of(context).showSnackBar(
@@ -86,22 +106,25 @@ class DataForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-      Text('$name :   '),
-      SizedBox(
-        width: 200,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-          child: TextField(
-            decoration: const InputDecoration(border: OutlineInputBorder()),
-            keyboardType: isNumber ? TextInputType.number : TextInputType.name,
-            controller: TextEditingController(),
-            inputFormatters: [
-              FilteringTextInputFormatter.allow(RegExp('[0-9]'))
-            ],
+    return SingleChildScrollView(
+      child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+        Text('$name :   '),
+        SizedBox(
+          width: 200,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+            child: TextField(
+              decoration: const InputDecoration(border: OutlineInputBorder()),
+              keyboardType:
+                  isNumber ? TextInputType.number : TextInputType.text,
+              controller: TextEditingController(),
+              // inputFormatters: [
+              //   FilteringTextInputFormatter.allow(RegExp('[0-9]'))
+              // ],
+            ),
           ),
         ),
-      ),
-    ]);
+      ]),
+    );
   }
 }

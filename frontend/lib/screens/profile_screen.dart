@@ -44,6 +44,9 @@ class ProfileScreen extends StatelessWidget {
               Row(
                 children: const [Text('목표 :'), Text('벌크업')],
               ),
+              Row(
+                children: const [Text('권장 일일 칼로리 :'), Text('2600 kcal')],
+              ),
               TextButton(onPressed: (() => {}), child: const Text('수정하기'))
             ],
           ),
