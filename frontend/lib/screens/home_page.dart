@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:toonflix/screens/analysis_page.dart';
+import 'package:toonflix/charts/chart.dart';
 import 'package:toonflix/screens/calender_screen.dart';
 import 'package:toonflix/screens/camera_screen.dart';
 import 'package:toonflix/screens/profile_screen.dart';
@@ -18,9 +18,12 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    AnimationController startAnimation;
+
     return ListView(children: [
       Container(
         padding: const EdgeInsets.symmetric(vertical: 10),
+        color: Colors.white,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -65,12 +68,13 @@ class HomePage extends StatelessWidget {
           bottom: 10,
         ),
         decoration: const BoxDecoration(
-          border: Border(
-            bottom: BorderSide(
-              color: Colors.black26,
-              width: 1,
-            ),
-          ),
+          color: Colors.white,
+          // border: Border(
+          //   bottom: BorderSide(
+          //     color: Colors.black26,
+          //     width: 1,
+          //   ),
+          // ),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -83,12 +87,14 @@ class HomePage extends StatelessWidget {
           ],
         ),
       ),
-      const Text('오늘 하루 어떤 음식을 드셨나요? ',
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.w600,
-          )),
+      // const Text('오늘 하루 어떤 음식을 드셨나요? ',
+      //     textAlign: TextAlign.center,
+      //     style: TextStyle(
+      //       backgroundColor: Colors.white,
+      //       fontSize: 20,
+      //       fontFamily: "Pura",
+      //       fontWeight: FontWeight.w200,
+      //     )),
       const SizedBox(height: 15),
       Column(
         children: [
@@ -125,7 +131,13 @@ class HomePage extends StatelessWidget {
       ),
       Row(
         children: [
-          const Text('오늘의 기록  '),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 8.0),
+            child: Text(
+              '오늘의 기록',
+              style: TextStyle(fontSize: 15, fontFamily: "Pura"),
+            ),
+          ),
           Container(
             height: 1.0,
             width: 200,
@@ -167,14 +179,23 @@ class RecordCircle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+      child: Column(children: [
         Text(data,
             style: const TextStyle(
-              fontSize: 20,
+              fontFamily: "Pura",
+              fontSize: 15,
             )),
-        const Icon(Icons.pie_chart_rounded, size: 70)
-      ],
+        const SizedBox(
+          height: 10,
+        ),
+        SizedBox(
+          width: 60,
+          height: 60,
+          child: ChartPage(),
+        )
+      ]),
     );
   }
 }

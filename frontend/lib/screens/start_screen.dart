@@ -22,7 +22,7 @@ class StartScreen extends StatelessWidget {
       print('여기까지 잘됨');
       final url = Uri.parse('http://192.168.45.46:8080/users/login/${user.id}');
       final response = await http.get(url);
-      print('여기까지도 잦ㄹ됨');
+      print('여기까지도 잘됨');
 
       print(response.body);
       print('Response status: ----------------- ${response.statusCode}');

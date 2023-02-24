@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -18,7 +19,7 @@ class _CameraScreenState extends State<CameraScreen> {
   late Future<Widget> photo;
 
   Future<int> _uploadToSignedURL(
-      {required Widget file, required String url}) async {
+      {required Uint8List file, required String url}) async {
     http.Response response = await http.put(Uri.parse(url), body: file);
     return response.statusCode;
   }
@@ -102,6 +103,30 @@ class _CameraScreenState extends State<CameraScreen> {
     // pickImage 함수 외에 pickVideo 함수가 더 있다.
     XFile? f = await ImagePicker().pickImage(source: source);
     mPhoto = File(f!.path);
+
+    Future<Uint8List> sendPhoto = mPhoto!.readAsBytes();
+
+    ///// 여기 고쳐야 함 ㅜㅜ
+    // Future<File> writeImageTemp(String base64Image, String imageName) async {
+    //   final dir = await getTemporaryDirectory();
+    //   await dir.create(recursive: true);
+    //   final tempFile = File(path.join(dir.path, imageName));
+    //   await tempFile.writeAsBytes(base64.decode(base64Image));
+    //   return tempFile;
+    // }
+
+    sendPhoto.then((val) {
+      Future<int> data = _uploadToSignedURL(
+          file: val, //val,
+          url:
+              'https://makeat.s3.amazonaws.com/3.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA37IAGAIXQ52EVAUK%2F20230224%2Fap-northeast-2%2Fs3%2Faws4_request&X-Amz-Date=20230224T044146Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=4c2038c1c2e64589295642eccd3a9acef9ee1889d3aa751cd7af570657b603a8');
+      print('전송 성공');
+
+      data.then((value) => print('이유는 $value'));
+    }).catchError((error) {
+      print('Faliure to 사진전송');
+    });
+
     Widget photo = (mPhoto != null) ? Image.file(mPhoto!) : const Text('EMPTY');
     return photo;
     //setState(() => mPhoto = File(f!.path));

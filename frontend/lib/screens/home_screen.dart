@@ -57,6 +57,10 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
         centerTitle: true,
         elevation: 2,
         backgroundColor: Colors.white,
+        shape: RoundedRectangleBorder(
+            //버튼을 둥글게 처리
+            borderRadius: BorderRadius.circular(0),
+            side: const BorderSide(color: Colors.white)),
 
         foregroundColor: Colors.black,
         title: SizedBox(width: 40, child: Image.asset('images/logo.png')),
@@ -76,11 +80,11 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             label: 'Day',
             backgroundColor: Colors.green,
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.calendar_month_outlined),
-            label: 'Month',
-            backgroundColor: Colors.purple,
-          ),
+          // BottomNavigationBarItem(
+          //   icon: Icon(Icons.calendar_month_outlined),
+          //   label: 'Month',
+          //   backgroundColor: Colors.purple,
+          // ),
         ],
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.amber[800],

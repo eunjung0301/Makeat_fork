@@ -45,6 +45,8 @@ dependencies:
   url_launcher: ^6.1.9
   # kakao_flutter_sdk: ^1.1.0
   kakao_flutter_sdk_user: ^1.3.1
+  file_picker: ^5.2.5
+  rive: ^0.9.1
 
 dev_dependencies:
   flutter_test:
@@ -77,6 +79,7 @@ flutter:
     - images/logo_title.png
     - images/test_food.jpg
     - images/kakao_login_medium_wide.png
+    - images/food_loading.riv
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 
@@ -88,17 +91,25 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
-  #   - family: Trajan Pro
-  #     fonts:
-  #       - asset: fonts/TrajanPro.ttf
-  #       - asset: fonts/TrajanPro_Bold.ttf
-  #         weight: 700
-  #
-  # For details regarding fonts from package dependencies,
+  fonts:
+    # - family: Schyler
+    #   fonts:
+    #     - asset: fonts/Schyler-Regular.ttf
+    #     - asset: fonts/Schyler-Italic.ttf
+    #       style: italic
+    # - family: Trajan Pro
+    #   fonts:
+    #     - asset: fonts/TrajanPro.ttf
+    #     - asset: fonts/TrajanPro_Bold.ttf
+    #       weight: 700
+  
+    - family: Binggrae
+      fonts:
+        - asset: assets/fonts/BinggraeSamanco.otf
+          weight: 700
+        - asset: assets/fonts/BinggraeSamanco-Bold.otf
+    - family: Pura
+      fonts:
+        - asset: assets/fonts/Pura.otf
+      # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

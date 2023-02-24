@@ -69,4 +69,10 @@ flutter {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    // RIVS때문에 추가
+    // implementation 'app.rive:rive-android:4.0.0'
+    // // During initialization, you may need to add a dependency
+    // // for Jetpack Startup
+    // implementation "androidx.startup:startup-runtime:1.1.0"
 }

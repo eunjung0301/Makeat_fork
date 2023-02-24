@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:http/http.dart';
 import 'package:toonflix/models/webtoon_model.dart';
 import 'package:toonflix/services/api_service.dart';
 import 'package:toonflix/widgets/Day_widget.dart';
@@ -25,26 +24,26 @@ class DayPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        elevation: 2,
-        centerTitle: true,
-        backgroundColor: Colors.white,
-        foregroundColor: Colors.black,
-        title: const Text(
-          "식단기록",
-          style: TextStyle(
-            fontSize: 24,
-            fontWeight: FontWeight.w500,
-          ),
-        ),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.calendar_month_outlined),
-            iconSize: 30,
-            onPressed: () => _showDialog(context),
-          ),
-        ],
-      ),
+      // appBar: AppBar(
+      //   elevation: 2,
+      //   centerTitle: true,
+      //   backgroundColor: Colors.white,
+      //   foregroundColor: Colors.black,
+      //   title: const Text(
+      //     "식단기록",
+      //     style: TextStyle(
+      //       fontSize: 24,
+      //       fontWeight: FontWeight.w500,
+      //     ),
+      //   ),
+      //   actions: [
+      //     IconButton(
+      //       icon: const Icon(Icons.calendar_month_outlined),
+      //       iconSize: 30,
+      //       onPressed: () => _showDialog(context),
+      //     ),
+      //   ],
+      // ),
       body: FutureBuilder(
         future: webtoons,
         builder: (context, snapshot) {

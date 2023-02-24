@@ -1,8 +1,20 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.toonflix">
     <uses-permission android:name="android.permission.INTERNET" />
+
+    
+<!-- RIVE 를 쓰기 위해 작성 
+    <provider
+    android:name="androidx.startup.InitializationProvider"
+    android:authorities="${applicationId}.androidx-startup"
+    android:exported="false"
+    tools:node="merge">
+        <meta-data android:name="app.rive.runtime.kotlin.RiveInitializer"
+        android:value="androidx.startup" />
+    </provider> -->
+
     <application
-        android:label="toonflix"
+        android:label="Makeat"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher"
         android:usesCleartextTraffic="true">
